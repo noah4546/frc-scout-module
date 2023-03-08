@@ -1,0 +1,7 @@
+{
+  "name": "frc-scout-module",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
