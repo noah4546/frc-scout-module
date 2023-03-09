@@ -12,7 +12,7 @@ import { Observable, map } from 'rxjs';
 
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
-    return appConfigService.load();
+    return appConfigService.load(), appConfigService.loadTeams()
   }
 }
 
@@ -38,7 +38,7 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     BrowserModule, 
     HttpClientModule,
     IonicModule.forRoot(), 
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AppConfigService,

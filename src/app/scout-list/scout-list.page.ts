@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-scout-list',
@@ -8,15 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class ScoutListPage implements OnInit {
 
   public eventName: string = "McMaster";
-  public scoutType: string = "Match";
+  public scoutType: string = "match";
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   public onAddClicked() {
-    console.log("onAddClicked");
+    const uuid = uuidv4();
+    this._router.navigate(['scout', this.scoutType, uuid ])
   }
 
 }

@@ -1,0 +1,28 @@
+{
+    "template": {
+        "sections": [
+            {
+                "header": "Scout Info",
+                "fields": [
+                    {
+                        "type": "Text",
+                        "label": "Student Name"
+                    },
+                    {
+                        "type": "Number",
+                        "label": "Match Number",
+                        "min": 0,
+                        "max": 100
+                    },
+                    {
+                        "type": "Dropdown",
+                        "label": "Team",
+                        "items": [
+                            { "label": "Test", "value": "frc0" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

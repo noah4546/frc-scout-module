@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./scout-list/scout-list.module').then( m => m.ScoutListPageModule)
+  },
+  {
+    path: 'scout/:type/:id',
+    loadChildren: () => import('./scout/scout.module').then( m => m.ScoutPageModule)
   }
 ];
 @NgModule({
