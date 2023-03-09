@@ -24,3 +24,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Custom Styles */
+
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+ion-button.btn-float-br {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+}
