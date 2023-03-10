@@ -1,0 +1,11 @@
+
+.counter-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .value {
+        margin: 0 10px;
+        font-size: 1.5rem;
+    }
+}

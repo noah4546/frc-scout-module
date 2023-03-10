@@ -18,8 +18,129 @@
                         "type": "Dropdown",
                         "label": "Team",
                         "items": [
-                            { "label": "Test", "value": "frc0" }
+                            { "text": "Test", "value": "frc0" }
                         ]
+                    }
+                ]
+            },
+            {
+                "header": "Auto",
+                "fields": [
+                    {
+                        "type": "Counter",
+                        "label": "Cube High",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cube Mid",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cube Low",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone High",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone Mid",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone Low",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Mobility?"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Engaged?"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Docked?"
+                    }
+                ]
+            },
+            {
+                "header": "Teleop",
+                "fields": [
+                    {
+                        "type": "Counter",
+                        "label": "Cube High",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cube Mid",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cube Low",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone High",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone Mid",
+                        "min": 0,
+                        "max": 10
+                    },
+                    {
+                        "type": "Counter",
+                        "label": "Cone Low",
+                        "min": 0,
+                        "max": 10
+                    }
+                ]
+            },
+            {
+                "header": "End Game",
+                "fields": [
+                    {
+                        "type": "Checkbox",
+                        "label": "Docked?"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Parked?"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Engaged?"
+                    }
+                ]
+            },
+            {
+                "header": "Comments",
+                "fields": [
+                    {
+                        "type": "Text",
+                        "label": "Comments",
+                        "multiline": true
                     }
                 ]
             }

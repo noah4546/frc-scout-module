@@ -1,0 +1,12 @@
+<ion-item>
+  <ion-label>{{ field.label }}</ion-label>
+  <div class="counter-buttons">
+    <ion-button color="warning" class="remove" (click)="onRemove()">
+      <ion-icon slot="icon-only" name="remove"></ion-icon>
+    </ion-button>
+    <div class="value">{{ value }}</div>
+    <ion-button color="success" class="add" (click)="onAdd()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </div>
+</ion-item>

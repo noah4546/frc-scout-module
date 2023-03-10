@@ -5,13 +5,13 @@ export interface Template {
 
 export interface TemplateSection {
     header: string;
-    fields: (Field | TextField | NumberField | DropdownField)[]
+    fields: (Field | TextField | NumberField | DropdownField | CounterField | CheckboxField)[]
 }
 
 export interface Field {
     type: string;
     label: string;
-    value?: string;
+    value?: string | number;
 }
 
 export interface TextField extends Field {
@@ -24,10 +24,18 @@ export interface NumberField extends Field {
 }
 
 export interface DropdownField extends Field {
-    items: DropdownItem[];
+    items?: DropdownItem[];
 }
 
 export interface DropdownItem {
-    label: string;
+    text: string;
     value: string;
+}
+
+export interface CounterField extends NumberField {
+    
+}
+
+export interface CheckboxField extends Field {
+
 }

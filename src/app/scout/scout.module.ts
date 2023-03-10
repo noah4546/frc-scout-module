@@ -10,6 +10,9 @@ import { ScoutPage } from './scout.page';
 import { SectionComponent } from '../components/section/section.component';
 import { FieldComponent } from '../components/field/field.component';
 import { TextFieldComponent } from '../components/text-field/text-field.component';
+import { NumberFieldComponent } from '../components/number-field/number-field.component';
+import { DropdownFieldComponent } from '../components/dropdown-field/dropdown-field.component';
+import { CounterFieldComponent } from '../components/counter-field/counter-field.component';
 
 @NgModule({
   imports: [
@@ -22,7 +25,10 @@ import { TextFieldComponent } from '../components/text-field/text-field.componen
     ScoutPage,
     SectionComponent,
     FieldComponent,
-    TextFieldComponent
+    TextFieldComponent,
+    NumberFieldComponent,
+    DropdownFieldComponent,
+    CounterFieldComponent
   ]
 })
 export class ScoutPageModule {}

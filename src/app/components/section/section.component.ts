@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TemplateSection } from '../../models/template';
-import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'app-section',
@@ -9,12 +8,13 @@ import { AppConfigService } from '../../services/app-config.service';
 })
 export class SectionComponent implements OnInit {
 
-  public section: TemplateSection = AppConfigService.settings.template.sections[0];
+  @Input() public section!: TemplateSection;
+  @Output() sectionChange = new EventEmitter<TemplateSection>();
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.section)
+    //console.log(this.section)
   }
 
 }

@@ -1,3 +1,4 @@
-<div *ngIf="type === 'Text'">
-  <app-text-field [(field)]="field"></app-text-field>
-</div>
+<app-text-field *ngIf="type === 'Text'" [(field)]="field"></app-text-field>
+<app-number-field *ngIf="type === 'Number'" [(field)]="field"></app-number-field>
+<app-dropdown-field *ngIf="type === 'Dropdown'" [(field)]="field"></app-dropdown-field>
+<app-counter-field *ngIf="type === 'Counter'" [(field)]="field"></app-counter-field>

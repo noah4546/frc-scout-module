@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DropdownField, Field, NumberField, TextField } from 'src/app/models/template';
+import { CheckboxField, CounterField, DropdownField, Field, NumberField, TextField } from 'src/app/models/template';
 
 @Component({
   selector: 'app-field',
@@ -8,8 +8,8 @@ import { DropdownField, Field, NumberField, TextField } from 'src/app/models/tem
 })
 export class FieldComponent  implements OnInit {
 
-  @Input() public field!: Field | TextField | NumberField | DropdownField;
-  @Output() fieldChange = new EventEmitter<Field | TextField | NumberField | DropdownField>();
+  @Input() public field!: Field | TextField | NumberField | DropdownField | CounterField | CheckboxField;
+  @Output() fieldChange = new EventEmitter<Field | TextField | NumberField | DropdownField | CounterField | CheckboxField>();
 
   public type!: string;
 
