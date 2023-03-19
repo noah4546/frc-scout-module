@@ -14,7 +14,7 @@ export class ScoutPage implements OnInit {
   public scoutType: string | null = null;
   private _scoutId: string | null = null;
 
-  public template: Template = AppConfigService.settings.template;
+  public template: Template = { ...AppConfigService.settings.template};
   
   constructor(
     private _route: ActivatedRoute
@@ -45,6 +45,19 @@ export class ScoutPage implements OnInit {
 
       dropdown.items.push(item);
     }  
+  }
+
+  public onDelete(): void {
+    console.log("onDelete");
+  }
+
+  public onCancel(): void {
+    console.log("onCancel");
+  }
+
+  public onSubmit(): void {
+    console.log("onSubmit");
+    console.log(this.template);
   }
 
 }

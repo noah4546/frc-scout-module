@@ -11,7 +11,7 @@ export interface TemplateSection {
 export interface Field {
     type: string;
     label: string;
-    value?: string | number;
+    value?: string | number | boolean;
 }
 
 export interface TextField extends Field {
@@ -33,7 +33,7 @@ export interface DropdownItem {
 }
 
 export interface CounterField extends NumberField {
-    
+
 }
 
 export interface CheckboxField extends Field {

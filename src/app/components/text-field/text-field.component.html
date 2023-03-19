@@ -1,4 +1,8 @@
-<ion-item>
+<ion-item *ngIf="!field.multiline">
   <ion-label position="stacked">{{ field.label }}</ion-label>
-  <ion-input type="text"></ion-input>
+  <ion-input type="text" (change)="onInput($event)" [value]="value"></ion-input>
+</ion-item>
+<ion-item *ngIf="field.multiline">
+  <ion-label position="stacked">{{ field.label }}</ion-label>
+  <ion-textarea [autoGrow]="true" #textArea (change)="onInput($event)"  [value]="value"></ion-textarea>
 </ion-item>

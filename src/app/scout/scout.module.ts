@@ -13,6 +13,7 @@ import { TextFieldComponent } from '../components/text-field/text-field.componen
 import { NumberFieldComponent } from '../components/number-field/number-field.component';
 import { DropdownFieldComponent } from '../components/dropdown-field/dropdown-field.component';
 import { CounterFieldComponent } from '../components/counter-field/counter-field.component';
+import { CheckboxFieldComponent } from '../components/checkbox-field/checkbox-field.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { CounterFieldComponent } from '../components/counter-field/counter-field
     TextFieldComponent,
     NumberFieldComponent,
     DropdownFieldComponent,
-    CounterFieldComponent
+    CounterFieldComponent,
+    CheckboxFieldComponent
   ]
 })
 export class ScoutPageModule {}

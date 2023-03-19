@@ -2,7 +2,7 @@
   <div class="section-header">{{ section.header }}</div>
   <div class="section-content">
     <div class="field" *ngFor="let field of section.fields; let i = index;">
-      <app-field [(field)]="section.fields[i]"></app-field>
+      <app-field [(field)]="section.fields[i]" (fieldChange)="update()"></app-field>
     </div>
   </div>
 </div>

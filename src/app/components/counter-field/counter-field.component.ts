@@ -20,14 +20,14 @@ export class CounterFieldComponent  implements OnInit {
       this.field.value = 0;
       this.value = 0;
 
-      this.fieldChange.emit(this.field);
+      this.update();
     }
 
     if (this.field.min !== undefined) {
       this.field.value = this.field.min;
       this.value = this.field.min;
 
-      this.fieldChange.emit(this.field);
+      this.update();
     }
   }
 
@@ -35,14 +35,19 @@ export class CounterFieldComponent  implements OnInit {
     if (!(this.field.max !== undefined && this.value >= this.field.max))
       this.value++;
 
-    this.fieldChange.emit(this.field);
+    this.update();
   }
 
   public onRemove() {
     if (!(this.field.min !== undefined && this.value <= this.field.min))
       this.value--;
 
-      this.fieldChange.emit(this.field);
+    this.update();
+  }
+
+  public update(): void {
+    this.field.value = this.value;
+    this.fieldChange.emit(this.field);
   }
 
 }

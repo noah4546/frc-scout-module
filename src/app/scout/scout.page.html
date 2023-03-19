@@ -9,4 +9,13 @@
     <app-section [(section)]="template.sections[i]"></app-section>
   </div> 
 
+  <div class="section submit">
+    <div class="section-header">Submit</div>
+    <div class="section-content">
+      <ion-button color="danger" (click)="onDelete()">Delete</ion-button>
+      <ion-button color="warning" (click)="onCancel()">Cancel</ion-button>
+      <ion-button color="success" (click)="onSubmit()">Submit</ion-button>
+    </div>
+  </div>
+
 </ion-content>

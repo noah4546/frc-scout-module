@@ -17,4 +17,8 @@ export class SectionComponent implements OnInit {
     //console.log(this.section)
   }
 
+  public update(): void {
+    this.sectionChange.emit(this.section);
+  }
+
 }

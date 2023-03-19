@@ -1,7 +1,14 @@
 <ion-list>
   <ion-item>
     <ion-label>{{ field.label }}</ion-label>
-    <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select {{ field.label }}">
+    <ion-select 
+      [interfaceOptions]="customActionSheetOptions" 
+      interface="action-sheet" 
+      placeholder="Select {{ field.label }}"
+      (ionChange)="onChange($event)"
+      [(ngModel)]="value"
+      #ionSelectEl
+      >
       <ion-select-option *ngFor="let item of field.items" value="{{ item.value }}">{{ item.text }}</ion-select-option>
     </ion-select>
   </ion-item>

@@ -42,3 +42,24 @@ ion-button.btn-float-br {
     right: 32px;
     bottom: 32px;
 }
+
+.section {
+    width: calc(100% - 12px);
+    margin: 6px;
+    background-color: var(--section-color);
+
+    .section-header {
+        width: 100%;
+        padding: 4px;
+        border-bottom: 1px solid #4f4f4f;
+    }
+    
+    .section-content {
+        width: 100%;
+        padding: 6px;
+    }
+
+    .field {
+        margin: 4px 0px;
+    }
+}
