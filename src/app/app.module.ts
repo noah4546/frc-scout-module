@@ -9,6 +9,10 @@ import { AppComponent } from './app.component';
 import { AppConfigService } from './services/app-config.service';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { OnlineStatusModule } from 'ngx-online-status';
+import { SQLiteService } from './services/sqlite.service';
+import { FRCDBService } from './services/frc-db.service';
 
 export function initializeApp(appConfigService: AppConfigService) {
   return (): Promise<any> => {
@@ -37,11 +41,15 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
   imports: [
     BrowserModule, 
     HttpClientModule,
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
+    OnlineStatusModule
   ],
   providers: [
     AppConfigService,
+    SQLiteService,
+    FRCDBService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppConfigService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true }

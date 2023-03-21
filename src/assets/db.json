@@ -1,0 +1,24 @@
+{
+    "database": "frc-db",
+    "version": 1,
+    "encrypted": false,
+    "mode": "full",
+    "tables": [
+        {
+            "name": "scouts",
+            "schema": [
+                { "column": "id", "value": "TEXT PRIMARY KEY NOT NULL" },
+                { "column": "team_key", "value": "TEXT NOT NULL" },
+                { "column": "event_key", "value": "TEXT NOT NULL" },
+                { "column": "template_id", "value": "INTEGER NOT NULL" },
+                { "column": "template_version", "value": "INTEGER NOT NULL" },
+                { "column": "match_id", "value": "TEXT NOT NULL" },
+                { "column": "scout_name", "value": "TEXT NOT NULL" },
+                { "column": "data", "value": "TEXT NOT NULL"}
+            ],
+            "values": [
+                [ "test", "frc0", "test", 1, 1, "-1", "Test Name", "" ]
+            ]
+        }
+    ]
+}
