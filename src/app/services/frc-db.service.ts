@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { SQLiteService } from './sqlite.service';
 import { DbnameVersionService } from './dbname-version.service';
-import { environment } from 'src/enviroments/enviroment';
 import { scoutsVersionUpgrades } from '../../upgrades/scouts-upgrade';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { BehaviorSubject } from 'rxjs';
 import { Scout } from '../models/DB';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class FRCDBService {
@@ -83,8 +83,8 @@ export class FRCDBService {
 		this.scoutsList.next(scouts);
 	}
 
-	async getScout(inScout: Scout): Promise<Scout | null> {
-		let scout: Scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: inScout.id });
+	async getScout(inScout: Scout): Promise<Scout> {
+		let scout: Scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 
 		if (!scout) {
 			scout = new Scout();
@@ -95,7 +95,7 @@ export class FRCDBService {
 			scout.data = inScout.data;
 
 			await this.sqlite.save(this.mDb, 'scouts', scout);
-			scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: inScout.id });
+			scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 
 			if (scout)
 				return scout;
@@ -111,8 +111,10 @@ export class FRCDBService {
 				scout.scout_name = inScout.scout_name;
 				scout.data = inScout.data;
 
-				await this.sqlite.save(this.mDb, 'scouts', updScout, { id: inScout.id });
-				scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: inScout.id });
+				
+
+				await this.sqlite.save(this.mDb, 'scouts', updScout, { id: `'${inScout.id}'` });
+				scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 
 				if (scout)
 					return scout;
@@ -126,10 +128,10 @@ export class FRCDBService {
 	}
 
 	async deleteScout(inScout: Scout): Promise<void> {
-		let scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: inScout.id });
+		let scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 
 		if (scout)
-			await this.sqlite.remove(this.mDb, 'scouts', { id: inScout.id });
+			await this.sqlite.remove(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 		
 		return;
 	}

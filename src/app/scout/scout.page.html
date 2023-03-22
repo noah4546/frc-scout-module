@@ -5,6 +5,8 @@
 </ion-header>
 <ion-content>
 
+  <app-scout-info [(scoutInfo)]="scoutInfo"></app-scout-info>
+
   <div *ngFor="let section of template.sections; let i = index;">
     <app-section [(section)]="template.sections[i]"></app-section>
   </div> 

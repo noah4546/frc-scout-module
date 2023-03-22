@@ -1,0 +1,14 @@
+<div class="section">
+  <div class="section-header">Scout Info</div>
+  <div class="section-content">
+    <div class="field">
+      <app-text-field [(field)]="studentName" (fieldChange)="onChange()"></app-text-field>
+    </div>
+    <div class="field">
+      <app-number-field [(field)]="matchNumber" (fieldChange)="onChange()"></app-number-field>
+    </div>
+    <div class="field">
+      <app-dropdown-field [(field)]="team" (fieldChange)="onChange()"></app-dropdown-field>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Template, DropdownField, DropdownItem } from '../models/template';
 import { AppConfigService } from '../services/app-config.service';
 import { Team } from '../models/teams';
+import { ScoutInfo } from '../models/scoutInfo';
+import { AlertController } from '@ionic/angular';
+import { Scout } from '../models/DB';
+import { FRCDBService } from '../services/frc-db.service';
 
 @Component({
   selector: 'app-scout',
@@ -11,40 +15,30 @@ import { Team } from '../models/teams';
 })
 export class ScoutPage implements OnInit {
 
-  public scoutType: string | null = null;
-  private _scoutId: string | null = null;
+  public scoutType!: string;
+  private _scoutId!: string;
 
+  public scoutInfo: ScoutInfo = new ScoutInfo();
   public template: Template = { ...AppConfigService.settings.template};
+
+  private scout: Scout = new Scout();
   
   constructor(
-    private _route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertController,
+    private db: FRCDBService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // Get route params
-    this._route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.scoutType = params['type'];
       this._scoutId = params['id'];    
       console.log(this._scoutId);
     });
 
-    // Add items to dropdown
-    let teams: Team[] = AppConfigService.teams;
-    let dropdown = this.template.sections[0].fields[2] as DropdownField;
-
-    if (dropdown.items === undefined)
-      dropdown.items = [];
-
-    for (let i = 0; i < Object.keys(teams).length; i++) {
-      const team = teams[i];
-
-      const item: DropdownItem = {
-        text: `${team.team_number} - ${team.nickname ?? team.name}`,
-        value: team.key
-      };
-
-      dropdown.items.push(item);
-    }  
+    this.scout.id = this._scoutId;
+    this.scout = await this.db.getScout(this.scout);
   }
 
   public onDelete(): void {
@@ -55,9 +49,28 @@ export class ScoutPage implements OnInit {
     console.log("onCancel");
   }
 
-  public onSubmit(): void {
-    console.log("onSubmit");
-    console.log(this.template);
+  public async onSubmit(): Promise<void> {
+    const isScoutValid = this.scoutInfo.isValid();
+
+    if (!isScoutValid.valid) {
+      const alert = await this.alert.create({
+        header: 'Alert',
+        message: isScoutValid.prompt ?? 'A requied field may be missing info!',
+        buttons: [ 'OK' ]
+      });
+
+      await alert.present();
+      return;
+    }
+
+    this.scout.scout_name = this.scoutInfo.studentName;
+    this.scout.match_id = this.scoutInfo.matchKey;
+    this.scout.team_key = this.scoutInfo.teamKey;
+    this.scout.event_key = 'onham';
+    this.scout.data = JSON.stringify(this.template);
+
+    console.log(this.scout);
+    this.scout = await this.db.getScout(this.scout);
   }
 
 }

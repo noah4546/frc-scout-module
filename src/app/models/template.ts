@@ -12,6 +12,7 @@ export interface Field {
     type: string;
     label: string;
     value?: string | number | boolean;
+    required?: boolean;
 }
 
 export interface TextField extends Field {

@@ -13,11 +13,11 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { OnlineStatusModule } from 'ngx-online-status';
 import { SQLiteService } from './services/sqlite.service';
 import { FRCDBService } from './services/frc-db.service';
+import { DbnameVersionService } from './services/dbname-version.service';
+import { InitializeAppService } from './services/initialize.app.service';
 
-export function initializeApp(appConfigService: AppConfigService) {
-  return (): Promise<any> => {
-    return appConfigService.load(), appConfigService.loadTeams()
-  }
+export function initializeApp(init: InitializeAppService) {
+  return () => init.initializeApp();
 }
 
 @Injectable()
@@ -48,10 +48,12 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
   ],
   providers: [
     AppConfigService,
+    InitializeAppService,
     SQLiteService,
     FRCDBService,
+    DbnameVersionService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppConfigService], multi: true },
+    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [InitializeAppService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true }
   ],
   bootstrap: [
