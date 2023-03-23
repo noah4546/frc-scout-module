@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onBack()" size="large">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="settings-section">
+    <div class="setting-header">General</div>
+    <ion-item (click)="onSync()">
+      <ion-icon slot="start" name="sync"></ion-icon>
+      <ion-label>Sync to Server</ion-label>
+    </ion-item>
+  </div>
+
+  <div class="settings-section">
+    <div class="setting-header">About</div>
+    <ion-item>
+      <ion-icon slot="start" name="none"></ion-icon>
+      <ion-label>Release Notes</ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

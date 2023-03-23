@@ -1,6 +1,16 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()" size="large">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ scoutType | titlecase }} Scout</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDelete()" size="medium" color="danger">
+        <ion-icon slot="start" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -12,11 +22,8 @@
   </div> 
 
   <div class="section submit">
-    <div class="section-header">Submit</div>
     <div class="section-content">
-      <ion-button color="danger" (click)="onDelete()">Delete</ion-button>
-      <ion-button color="warning" (click)="onCancel()">Cancel</ion-button>
-      <ion-button color="success" (click)="onSubmit()">Submit</ion-button>
+      <ion-button color="success" expand="block" (click)="onSubmit()">Submit</ion-button>
     </div>
   </div>
 

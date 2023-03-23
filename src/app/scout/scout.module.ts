@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { IonBackButton, IonicModule } from '@ionic/angular';
 
 import { ScoutPageRoutingModule } from './scout-routing.module';
 

@@ -32,6 +32,7 @@ export class SQLiteService {
     this.sqlitePlugin = CapacitorSQLite;
     this.sqliteConnection = new SQLiteConnection(this.sqlitePlugin);
     this.isService = true;
+    
     return true;
   }
 

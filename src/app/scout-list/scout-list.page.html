@@ -1,13 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ eventName }} {{ scoutType | titlecase }} Scouting</ion-title>
+    <ion-title (click)="test()">{{ eventName }} {{ scoutType | titlecase }} Scouting</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="medium" (click)="onSettings()">
+        <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 
-  <div class="scout-list">
-
-  </div>
+  <ion-list class="scout-list">
+    <ion-item *ngFor="let scout of scoutsList">
+      <ion-label>
+        <h3>Scout {{ scout.team_key }} in Match {{ scout.match_id }}</h3>
+        <p>By {{ scout.scout_name }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-button class="btn-float-br" shape="circle" color="primary" (click)="onAddClicked()">
     <ion-icon slot="icon-only" name="add" size="large"></ion-icon>

@@ -53,7 +53,9 @@ export class ScoutInfoComponent  implements OnInit {
       };
 
       this.team.items.push(item);
-    }  
+    } 
+
+    this.onChange();
   }
 
   public onChange() {

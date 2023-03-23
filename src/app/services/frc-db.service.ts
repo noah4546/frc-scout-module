@@ -87,31 +87,38 @@ export class FRCDBService {
 		let scout: Scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
 
 		if (!scout) {
-			scout = new Scout();
-			scout.id = inScout.id;
-			scout.scout_name = inScout.scout_name;
-			scout.event_key = inScout.event_key;
-			scout.scout_name = inScout.scout_name;
-			scout.data = inScout.data;
+			scout = {
+				id: inScout.id,
+				team_key: inScout.team_key,
+				event_key: inScout.event_key,
+				match_id: inScout.match_id,
+				scout_name: inScout.scout_name, 
+				data: inScout.data
+			}
 
-			await this.sqlite.save(this.mDb, 'scouts', scout);
-			scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
-
-			if (scout)
+			try {
+				await this.sqlite.save(this.mDb, 'scouts', scout);
+				scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });
+	
+				if (scout)
+					return scout;
+				else
+					return Promise.reject(`Failed to get scout for id ${inScout.id}`);
+			} catch (e) {
+				console.log(`Fail Scout: ${e}`)
 				return scout;
-			else
-				return Promise.reject(`Failed to get scout for id ${inScout.id}`);
+			}
 
 		} else {
 			if (Object.keys(inScout).length > 1) {
-				const updScout: Scout = new Scout();
-				scout.id = inScout.id;
-				scout.scout_name = inScout.scout_name;
-				scout.event_key = inScout.event_key;
-				scout.scout_name = inScout.scout_name;
-				scout.data = inScout.data;
-
-				
+				const updScout: Scout = {
+					id: inScout.id,
+					team_key: inScout.team_key,
+					event_key: inScout.event_key,
+					match_id: inScout.match_id,
+					scout_name: inScout.scout_name, 
+					data: inScout.data
+				}
 
 				await this.sqlite.save(this.mDb, 'scouts', updScout, { id: `'${inScout.id}'` });
 				scout = await this.sqlite.findOneBy(this.mDb, 'scouts', { id: `'${inScout.id}'` });

@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'scout/:type/:id',
     loadChildren: () => import('./scout/scout.module').then( m => m.ScoutPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 @NgModule({
