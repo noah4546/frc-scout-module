@@ -5,7 +5,7 @@
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ scoutType | titlecase }} Scout</ion-title>
+    <ion-title (click)="test()">{{ scoutType | titlecase }} Scout</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDelete()" size="medium" color="danger">
         <ion-icon slot="start" name="trash"></ion-icon>

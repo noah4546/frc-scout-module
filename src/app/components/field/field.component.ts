@@ -19,4 +19,8 @@ export class FieldComponent  implements OnInit {
     this.type = this.field.type;
   }
 
+  public onChange() {
+    this.fieldChange.emit(this.field);
+  }
+
 }

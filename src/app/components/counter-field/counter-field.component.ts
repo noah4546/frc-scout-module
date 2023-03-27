@@ -12,22 +12,18 @@ export class CounterFieldComponent  implements OnInit {
   @Output() fieldChange = new EventEmitter<CounterField>();
 
   public value: number = 0;
-
   constructor() { }
 
   ngOnInit() {
-    if (this.field.value === undefined) {
-      this.field.value = 0;
-      this.value = 0;
+    if (this.field.value === undefined || !(typeof this.field.value === 'number')) {
 
-      this.update();
-    }
+      if (this.field.min !== undefined)
+        this.setValue(this.field.min)
+      else
+        this.setValue(0);
 
-    if (this.field.min !== undefined) {
-      this.field.value = this.field.min;
-      this.value = this.field.min;
-
-      this.update();
+    } else {
+      this.setValue(this.field.value);
     }
   }
 
@@ -42,6 +38,12 @@ export class CounterFieldComponent  implements OnInit {
     if (!(this.field.min !== undefined && this.value <= this.field.min))
       this.value--;
 
+    this.update();
+  }
+
+  private setValue(value: number) {
+    this.value = value;
+    this.field.value = value;
     this.update();
   }
 

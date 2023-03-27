@@ -1,9 +1,10 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, OnDestroy, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {v4 as uuidv4} from 'uuid';
 import { FRCDBService } from '../services/frc-db.service';
 import { Scout } from '../models/DB';
 import { filter } from 'rxjs';
+import { IonPopover } from '@ionic/angular';
 
 @Component({
   selector: 'app-scout-list',
@@ -38,7 +39,6 @@ export class ScoutListPage implements OnInit {
   }
 
   public async getScouts() {
-
     await this.db.getAllData();
 
     try {
@@ -54,6 +54,10 @@ export class ScoutListPage implements OnInit {
     }
   }
 
+  public onClickScout(id: string) {
+    this.router.navigate(['scout', this.scoutType, id]);
+  }
+
   public async test() {
     this.db.getScout({
       id: 'aaabbbccc',
@@ -66,7 +70,7 @@ export class ScoutListPage implements OnInit {
     this.getScouts();
   }
 
-  public onSettings(): void {
+  public openSettings(): void {
     this.router.navigate(['/settings']);
   }
 

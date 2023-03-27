@@ -48,6 +48,11 @@ export class ScoutPage implements OnInit {
     this.scoutInfo.matchKey = this.scout.match_id ?? '';
     this.scoutInfo.studentName = this.scout.scout_name ?? '';
     this.scoutInfo.teamKey = this.scout.team_key ?? '';
+
+    if (this.scout.data !== undefined)
+      this.template = JSON.parse(this.scout.data);
+
+    console.log(this.scout);
   }
 
   public async onDelete(): Promise<void> {
@@ -118,8 +123,19 @@ export class ScoutPage implements OnInit {
       data: JSON.stringify(this.template)
     }
 
-    this.scout = await this.db.getScout(this.scout);
+    try {
+      this.scout = await this.db.getScout(this.scout);
+    } catch (e) {
+      console.error(e);
+    }
+
+    console.log(this.template);
+    console.log(this.scout);
     this.router.navigate([''])
+  }
+
+  public test() {
+    console.log(this.template);
   }
 
 }

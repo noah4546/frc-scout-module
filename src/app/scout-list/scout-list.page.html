@@ -2,16 +2,28 @@
   <ion-toolbar>
     <ion-title (click)="test()">{{ eventName }} {{ scoutType | titlecase }} Scouting</ion-title>
     <ion-buttons slot="end">
-      <ion-button size="medium" (click)="onSettings()">
+      <ion-button size="medium" id="popover-button">
         <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" (click)="getScouts()">Refresh</ion-item>
+          <ion-item [button]="true" [detail]="false" (click)="openSettings()">Settings</ion-item>
+        </ion-list>     
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
 </ion-header>
 <ion-content>
 
   <ion-list class="scout-list">
-    <ion-item *ngFor="let scout of scoutsList">
+    <ion-item *ngFor="let scout of scoutsList" (click)="onClickScout(scout.id)">
       <ion-label>
         <h3>Scout {{ scout.team_key }} in Match {{ scout.match_id }}</h3>
         <p>By {{ scout.scout_name }}</p>
@@ -19,8 +31,10 @@
     </ion-item>
   </ion-list>
 
-  <ion-button class="btn-float-br" shape="circle" color="primary" (click)="onAddClicked()">
-    <ion-icon slot="icon-only" name="add" size="large"></ion-icon>
-  </ion-button>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="primary" (click)="onAddClicked()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
