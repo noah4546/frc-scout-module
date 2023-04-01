@@ -4,7 +4,7 @@ import { Template, DropdownField, DropdownItem } from '../models/template';
 import { AppConfigService } from '../services/app-config.service';
 import { Team } from '../models/teams';
 import { ScoutInfo } from '../models/scoutInfo';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { Scout } from '../models/DB';
 import { FRCDBService } from '../services/frc-db.service';
 
@@ -27,7 +27,8 @@ export class ScoutPage implements OnInit {
     private route: ActivatedRoute,
     private alert: AlertController,
     private db: FRCDBService,
-    private router: Router
+    private router: Router,
+    private platform: Platform
   ) { }
 
   async ngOnInit() {
@@ -45,14 +46,16 @@ export class ScoutPage implements OnInit {
     this.scout.id = this._scoutId;
     this.scout = await this.db.getScout(this.scout);
 
-    this.scoutInfo.matchKey = this.scout.match_id ?? '';
-    this.scoutInfo.studentName = this.scout.scout_name ?? '';
-    this.scoutInfo.teamKey = this.scout.team_key ?? '';
+    this.scoutInfo.matchKey = this.scout.matchKey ?? '';
+    this.scoutInfo.scoutName = this.scout.scoutName ?? '';
+    this.scoutInfo.teamKey = this.scout.teamKey ?? '';
 
     if (this.scout.data !== undefined)
       this.template = JSON.parse(this.scout.data);
 
     console.log(this.scout);
+
+    this.platform.backButton.subscribeWithPriority(0, () => this.onCancel());
   }
 
   public async onDelete(): Promise<void> {
@@ -116,10 +119,10 @@ export class ScoutPage implements OnInit {
 
     this.scout = {
       id: this.scout.id,
-      team_key: this.scoutInfo.teamKey,
-      event_key: 'onham',
-      match_id: this.scoutInfo.matchKey,
-      scout_name: this.scoutInfo.studentName,
+      teamKey: this.scoutInfo.teamKey,
+      eventKey: 'onham',
+      matchKey: this.scoutInfo.matchKey,
+      scoutName: this.scoutInfo.scoutName,
       data: JSON.stringify(this.template)
     }
 

@@ -5,12 +5,12 @@ export interface ValidCheck {
 }
 
 export class ScoutInfo {
-    studentName: string = '';
+    scoutName: string = '';
     matchKey: string = '';
     teamKey: string = '';
 
     public isValid(): ValidCheck {
-        if (this.studentName=== undefined || this.studentName.length == 0)
+        if (this.scoutName=== undefined || this.scoutName.length == 0)
             return { 
                 valid: false,
                 prompt: 'Please enter a Student Name'

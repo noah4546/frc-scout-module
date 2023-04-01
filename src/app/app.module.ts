@@ -15,6 +15,8 @@ import { SQLiteService } from './services/sqlite.service';
 import { FRCDBService } from './services/frc-db.service';
 import { DbnameVersionService } from './services/dbname-version.service';
 import { InitializeAppService } from './services/initialize.app.service';
+import { ApiModule } from './features/api/api.module';
+import { SyncService } from './services/sync.service';
 
 export function initializeApp(init: InitializeAppService) {
   return () => init.initializeApp();
@@ -52,6 +54,8 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     SQLiteService,
     FRCDBService,
     DbnameVersionService,
+    ApiModule,
+    SyncService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [InitializeAppService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true }

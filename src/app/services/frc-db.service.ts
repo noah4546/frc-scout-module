@@ -89,10 +89,10 @@ export class FRCDBService {
 		if (!scout) {
 			scout = {
 				id: inScout.id,
-				team_key: inScout.team_key,
-				event_key: inScout.event_key,
-				match_id: inScout.match_id,
-				scout_name: inScout.scout_name, 
+				teamKey: inScout.teamKey,
+				eventKey: inScout.eventKey,
+				matchKey: inScout.matchKey,
+				scoutName: inScout.scoutName, 
 				data: inScout.data
 			}
 
@@ -113,10 +113,10 @@ export class FRCDBService {
 			if (Object.keys(inScout).length > 1) {
 				const updScout: Scout = {
 					id: inScout.id,
-					team_key: inScout.team_key,
-					event_key: inScout.event_key,
-					match_id: inScout.match_id,
-					scout_name: inScout.scout_name, 
+					teamKey: inScout.teamKey,
+					eventKey: inScout.eventKey,
+					matchKey: inScout.matchKey,
+					scoutName: inScout.scoutName, 
 					data: inScout.data
 				}
 

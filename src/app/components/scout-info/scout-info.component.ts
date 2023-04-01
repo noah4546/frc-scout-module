@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { ScoutInfo } from '../../models/scoutInfo';
 import { DropdownItem, TextField } from 'src/app/models/template';
 import { NumberField, DropdownField } from '../../models/template';
@@ -10,7 +10,7 @@ import { AppConfigService } from 'src/app/services/app-config.service';
   templateUrl: './scout-info.component.html',
   styleUrls: ['./scout-info.component.scss'],
 })
-export class ScoutInfoComponent  implements OnInit {
+export class ScoutInfoComponent  implements OnInit, AfterViewInit {
 
   @Input() public scoutInfo!: ScoutInfo;
   @Output() scoutInfoChange = new EventEmitter<ScoutInfo>();
@@ -36,8 +36,23 @@ export class ScoutInfoComponent  implements OnInit {
     if (this.scoutInfo === undefined)
       this.scoutInfo = new ScoutInfo();
   }
+  ngAfterViewInit(): void {
+    if (this.scoutInfo.scoutName !== undefined)
+      this.studentName.value = this.scoutInfo.scoutName;
+
+    if (this.scoutInfo.matchKey !== undefined)
+      this.matchNumber.value = this.scoutInfo.matchKey;
+
+    if (this.scoutInfo.teamKey !== undefined)
+      this.team.value = this.scoutInfo.teamKey;
+  }
 
   ngOnInit() {
+    console.log("Hell");
+    console.log(this.scoutInfo.scoutName);
+
+    
+
     // Add items to dropdown
     let teams: Team[] = AppConfigService.teams;
 
@@ -59,7 +74,7 @@ export class ScoutInfoComponent  implements OnInit {
   }
 
   public onChange() {
-    this.scoutInfo.studentName = (this.studentName.value ?? '').toString();
+    this.scoutInfo.scoutName = (this.studentName.value ?? '').toString();
     this.scoutInfo.matchKey = (this.matchNumber.value ?? '').toString();
     this.scoutInfo.teamKey = (this.team.value ?? '').toString();
 

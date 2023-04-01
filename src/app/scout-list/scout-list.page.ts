@@ -61,10 +61,10 @@ export class ScoutListPage implements OnInit {
   public async test() {
     this.db.getScout({
       id: 'aaabbbccc',
-      team_key: 'aaa',
-      event_key: 'test',
-      match_id: 'test',
-      scout_name: 'test',
+      teamKey: 'aaa',
+      eventKey: 'test',
+      matchKey: 'test',
+      scoutName: 'test',
       data: 'hello'
     })
     this.getScouts();

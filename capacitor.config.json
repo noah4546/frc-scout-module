@@ -21,6 +21,9 @@
       "electronWindowsLocation": "C:\\ProgramData\\CapacitorDatabases",
       "electronMacLocation": "YOUR_VOLUME/CapacitorDatabases",
       "electronLinuxLocation": "Databases"
+    },
+    "CapacitorHttp": {
+      "enabled": true
     }
   }
 }

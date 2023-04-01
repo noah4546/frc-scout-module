@@ -1,9 +1,9 @@
 
 export interface Scout {
     id: string;
-    team_key?: string;
-    event_key?: string;
-    match_id?: string;
-    scout_name?: string;
+    teamKey?: string;
+    eventKey?: string;
+    matchKey?: string;
+    scoutName?: string;
     data?: string;
 }

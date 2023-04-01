@@ -25,8 +25,8 @@
   <ion-list class="scout-list">
     <ion-item *ngFor="let scout of scoutsList" (click)="onClickScout(scout.id)">
       <ion-label>
-        <h3>Scout {{ scout.team_key }} in Match {{ scout.match_id }}</h3>
-        <p>By {{ scout.scout_name }}</p>
+        <h3>Scout {{ scout.teamKey }} in Match {{ scout.matchKey }}</h3>
+        <p>By {{ scout.scoutName }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

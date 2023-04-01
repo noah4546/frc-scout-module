@@ -1,6 +1,18 @@
 {
+    "api": {
+        "scoutApi": "https://scoutapi.tnoah.ca/api"
+    },
     "template": {
         "sections": [
+            {
+                "header": "Match Details",
+                "fields": [
+                    {
+                        "type": "Text",
+                        "label": "Alliance"
+                    }
+                ]
+            },
             {
                 "header": "Auto",
                 "fields": [
@@ -42,15 +54,15 @@
                     },
                     {
                         "type": "Checkbox",
-                        "label": "Mobility?"
+                        "label": "Crossed Line"
                     },
                     {
                         "type": "Checkbox",
-                        "label": "Engaged?"
+                        "label": "Docked (not balanced)"
                     },
                     {
                         "type": "Checkbox",
-                        "label": "Docked?"
+                        "label": "Balanced"
                     }
                 ]
             },
@@ -96,19 +108,49 @@
                 ]
             },
             {
+                "header": "Pickup From Ground",
+                "fields": [
+                    {
+                        "type": "Checkbox",
+                        "label": "Ground Pickup Cones"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Ground Pickup Cubes"
+                    }
+                ]
+            },
+            {
                 "header": "End Game",
                 "fields": [
                     {
                         "type": "Checkbox",
-                        "label": "Docked?"
+                        "label": "Ended fully in safe zone"
                     },
                     {
                         "type": "Checkbox",
-                        "label": "Parked?"
+                        "label": "Tried and Failed to Dock"
                     },
                     {
                         "type": "Checkbox",
-                        "label": "Engaged?"
+                        "label": "Docked (not balanced)"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Balanced"
+                    }
+                ]
+            },
+            {
+                "header": "Defence",
+                "fields": [
+                    {
+                        "type": "Checkbox",
+                        "label": "Did they defend?"
+                    },
+                    {
+                        "type": "Checkbox",
+                        "label": "Were they defended?"
                     }
                 ]
             },

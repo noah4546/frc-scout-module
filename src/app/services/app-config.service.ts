@@ -43,5 +43,8 @@ const jsonFile = 'assets/appConfig.json';
 const teamsFile = 'assets/teams.json';
 
 export interface IAppConfig {
+  api: {
+    scoutApi: string
+  }
   template: Template
 }
